@@ -1,0 +1,144 @@
+;դիսկրիմինանտ հաշվող ֆունկցիա
+(define (di a b c) 
+	(- (* b b) (* 4 a c)))
+ 
+;մեկ արմատ ունենալու դեպք
+(define (oneRoot a b) 
+	(/ (- b) (* 2 a)))
+ 
+              
+    
+;քառակուսային հավասարման ֆունկցիա
+(define (quadrate a b c)
+  (if (not (= a 0))
+      (begin
+       (set! d (di a b c))
+       (if (> d 0)
+           (begin
+            (set! x1 (/ (+ (- b) (sqrt d)) (* 2 a)))
+            (set! x2 (/ (- (- b) (sqrt d)) (* 2 a)))
+            (list x1 x2)
+            
+            )
+            (if (= d 0)
+                (oneRoot a b)
+                ("Has no solution")))
+       )
+      (if (and (= b 0) (= c 0))
+         "Infinity solutions"
+         (if (= b 0)
+             "Has no solution"
+         (- (/ c b))))))
+      
+
+(display "The solutions of the equation are:  ")
+(display (quadrate  3 7 2))
+(newline)(newline)
+
+;ամենամեծ ընդհանուր բաժանարարի ֆունկցիա
+(define (gcd num1 num2)
+  (if (= num2 0)
+      num1
+      (gcd num2 (remainder num1 num2))))
+
+(display "GCD  value of the 16 and 36 is:")
+(display (gcd 16 36))(newline)(newline)
+(display "GCD  value of the 324 and 8 is:")
+(display (gcd 324 8))(newline)(newline)
+
+
+
+;թվի ֆակտորիալ հաշվող ֆունկցիա
+(define (factorial x)
+  (if (= x 0)
+   1
+   (* x (factorial (- x 1)))))
+ 
+ (display "The factorial of 5 is :")
+(display (factorial 5))(newline)(newline)
+ (display "The factorial of 4 is :")
+(display (factorial 4))(newline)(newline)
+
+
+;ֆիբոնաչիի հաջորդականության անդամը հաշվող ֆունկցիա
+(define (fib n)
+  (if (= n 1)
+      1
+      (if (= n 2)
+          1
+          (+ (fib (- n 1)) (fib (- n 2))))))
+
+(display "the 7th term of the fibonacci sequnce is:")
+(display (fib 7))(newline)(newline)
+(display "the 5th term of the fibonacci sequnce is:")
+(display (fib 5))(newline)(newline)
+(display "the 3th term of the fibonacci sequnce is:")
+(display (fib 3))(newline)(newline)
+
+
+
+;լամբդա ֆունկցիաների կիրառման օրինակներ
+(define (make-adder num)
+  (lambda (x) (+ x num)))
+
+(display "the sum of 4 and 7 using lambda  is:")
+(display ((make-adder 4) 7))
+(newline)(newline)
+(display "the sum value of   2*5+6 equation using lambda  is:")
+(display ((lambda (a b) (+ (* 2 a) b)) 5 6))
+(newline)(newline)
+
+
+;define-syntax-ի միջոցով որոշ ֆունկցիաների սահմանում 
+(define-syntax մնացորդ
+ (syntax-rules (%)
+ ((մնացորդ a % b)
+ (remainder a b))))
+ 
+ 
+ (display "mod of 123 and 15 using define-sytnax is:")
+(display (մնացորդ 123  % 15))(newline)(newline)
+ (display "mod of 12 and 1 using define-syntax is:")
+(display (մնացորդ 12 % 1))(newline)(newline)
+
+
+
+(define b (list 13 42 76 99 0))
+(display "Length of the  (list 13 42 76 99 0) using length function is:")
+(display (length b))
+(newline)(newline)
+
+(display "First elem of the (list 13 42 76 99 0) using car function is:")
+(display (car b))
+(newline)(newline)
+
+(display "Return all elements of  the (list 13 42 76 99 0) except the first using cdr function is:")
+(display (cdr b))
+(newline)(newline)
+
+(define (get array n)
+ (if (<= n 0)
+     (car array)
+     (get (cdr array) (- n 1))))
+     
+(display "get 3th element of the (list 13 42 76 99 0)  using get function is:")
+(display (get b 3))
+(newline)(newline)
+
+
+(define-syntax for
+  (syntax-rules ()
+    ((for i from to գործողություն)
+     (let loop((i from))
+       ( if(< i to)
+       (begin
+	  գործողություն
+	  (loop (+ 1 i)))
+	  )))))
+(display "for loop using  define-syntax")(newline)
+(display "display 0 to 15 numbers using for ")
+(for i 0 15 (begin (display i) (display " ")))
+(newline)
+
+
+
