@@ -1,0 +1,111 @@
+(define a 67)
+(display "define variable")(newline)
+(display a)(newline)(newline)
+
+;____________________________________________
+
+(define (square a)
+	(* a a))
+      
+(display "define iterative function")(newline)
+(display (square 4))
+(newline)(newline)
+
+;____________________________________________
+
+(define (factorial x)
+  (if (= x 0)
+   1
+   (* x (factorial (- x 1)))))
+ 
+(display "define recursive function")(newline)
+(display (factorial 5))(newline)(newline)
+
+;____________________________________________
+
+(define (make-adder num)
+  (lambda (x) (+ x num)))
+
+(display "lambda")(newline)
+(display ((lambda (a b) (+ (* 2 a) b)) 5 6))
+(newline)(newline)
+
+;____________________________________________
+
+(define b (list 13 42 76 99 0))
+(display "list")(newline)
+(display b)(newline)(newline)
+
+;____________________________________________
+
+(define c (list 3 12 7 9 9 34))
+(display "length")(newline)
+(display (length c))
+(newline)(newline)
+
+;____________________________________________
+
+(define t (list 45 8 3 12 7 9 9 34))
+(display "car")(newline)
+(display (car t))
+(newline)(newline)
+
+;____________________________________________
+
+(define s (list 9 7 7 9 9 34))
+(display "cdr")(newline)
+(display (cdr s))
+(newline)(newline)
+
+;____________________________________________
+
+(display "let")(newline)
+(let ((x 10))
+  (display x))
+(newline)(newline)
+
+;_____________________________________________
+
+(display "if statement")(newline)
+(if (> 12 5) (display "if blok") (display "else blok"))
+(newline)(newline)
+
+;____________________________________________
+
+(display "math operators")(newline)
+(display (+ 12 43 (/ (* 14 3 (- 88 87)) 21.0)))(newline)(newline)
+
+;____________________________________________
+
+(display "display")(newline)
+(display "Hello World!")(newline)(newline)
+
+;___________________________________________
+
+(define z 33)
+(set! z 77)
+(display "set!")(newline)
+(display z)(newline)(newline)
+
+;___________________________________________
+
+(define-syntax for
+  (syntax-rules ()
+    ((for i from to գործողություն)
+     (let loop((i from))
+       ( if(< i to)
+       (begin
+	  գործողություն
+	  (loop (+ 1 i)))
+	  )))))
+
+(display "define-syntax & syntax-rules")(newline)
+(for i 0 15 (begin (display i) (display " ")))
+
+;_____________________________________________
+
+
+
+
+
+
